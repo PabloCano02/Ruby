@@ -1,103 +1,77 @@
-#Manipulación de Strings
+#Arrays and Hashes
 
-#En ruby, un string es una secuencia de caracteres alfanuméricos
-#los strings son objetos de la clase String
-#los strings no son inmutables, se pueden modificar, cambia el valor del objeto
-#Metodos de los strings:
+#Colecciones ordenadas de diferentes objetos, están indexados, se pueden obtener elementos mediante el indice
+#Normalmente el indice del array comienza en cero, se puede contar indices de los arregos de atras hacia adelante
+#Se hace con indices negativos
+#Los arrays son dinámicos, a medida que ingreso datos al array, incrementa el tamaño
+cadena = "Cadena de caracteres"
+puts cadena
+#Imprime el primer caracter del array
+puts cadena[0]
+#Imprime el tercer caracter del array
+puts cadena[2]
+#Imprime el segundo caracter del array de atrás hacia adelante
+puts cadena[-2]
+#Imprime la posición desde la cual se quiere arrancar hasta la posición a la que se quiere llegar sin incluir,
+#se llama slicing
+puts cadena[0,6]
 
-#Imprimir cadena de caracteres
-#puts agrega salto de linea, print no lo hace
-puts "Esta es mi primera cadena"
-print "Esta es mi segunda cadena"
-puts "Esta es mi tercera cadena"
+#Funcionalidad de arrays -> Para métodos y funciones es mejor poner paréntesis
+#Crear un array vacío
+ciudades = Array.new()
+#crear un array con n posiciones
+ciudades = Array.new(4)
+#Crear un array de n posiciones y que en todas diga lo mismo
+ciudades = Array.new(4, "Medellín")
+puts ciudades
+#Elemento vacio en Ruby -> nil
+#Crear un array con un conjunto inicial de elementos, pueden ser de diferente tipo
+ciudades = ["Medellín", "Rionegro", "Jericó", "Marinilla", "Sopetrán"]
+for ciudad in ciudades
+  puts "Hoy voy a: " + ciudad
+end
+#Acceder a un elemento del array
+puts ciudades[1]
+puts ciudades[-4]
+puts ciudades[0,3]
+#[Obtiene el elemento n][Obtiene los elementos desde a hasta b sin incluirlo]
+puts ciudades[0][0,5]
 
-#Uso de comillas dobles y comillas simples
-#Secuencia de escape: Son caracteres especiales que se pueden utilizar dentro de una cadena de texto,
-#produciendo un determinado en ella, por ejemplo: \n, \t
-puts "Esta es mi \nprimera cadena"
-puts 'Esta es mi \ntercera cadena'
-puts "Esta es mi \"primera\" cadena"
-#Strings con comillas dobles, se resuelven las secuencias de escape, se ejecutan. Mientras que para
-#comilla simple imprime normal
+#Asignarle a un elemento de un arreglo existente otro elemento
+ciudades = ["Medellín", "Rionegro", "Jericó", "Marinilla", "Sopetrán"]
+puts ciudades[-4] = 89
+puts ciudades[5] = "La ceja"
+puts ciudades[7] = "Guarne"
+puts ciudades[-2] = "El retiro"
+puts ciudades[-1] = ["Guarne", "San Vicente"]
+#Para imprimir San vicente
+puts ciudades[-1][-1]
 
-#Concatenar strings
-puts "Esta es mi primera cadena " + "Esta es mi segunda cadena"
-puts 'Esta es mi primera cadena ' + 'Esta es mi segunda cadena'
-puts "Esta es mi primera cadena " + 'Esta es mi segunda cadena'
-puts 'Esta es mi primera cadena ' + "Esta es mi segunda cadena"
-#Comparación con comilla simple y doble
-puts 'Esta es mi primera cadena' == "Esta es mi primera cadena"
-#Comparación con comilla simple y doble, además con secuencias de escape
-puts 'Esta es mi \nprimera cadena' == "Esta es mi \nprimera cadena"
-#Comparar elementos de un array y comparlo con un string
-array = ["h","o","l","a"]
-puts array == "hola"
-#join: Junta los caracteres del array y los vuelve un string
-array = ["h","o","l","a"]
-puts array.join == "hola"
+#Hashes
+#Son colecciones de pares clave-valor, en un hash se va a tener un conjunto de elementos y cada elemento
+#es una pareja, por ejemplo "Antioquia" => "Medellín". Donde un componente es la clave y el otro es el valor
+#Para acceder al array se hace por su indice, al hash se accede por la clave
+#Los hash en el elemento de la clave se ingresan números o caracteres
+#Los hash no son ordenados, se acomodan arbitrariamente
+#Es posible pedir un elemento a un hash mediante una clave y que la clave no exista, retorna un nulo (nil)
 
-#Crear una cadena de string vacia
-una_cadena = String.new
-otra_cadena = "Esta es otra cadena de caracteres" #Utiliza duck typing
-una_cadena = "Esta es una primera cadena. "
-puts una_cadena + otra_cadena
-#Si camina como un pato y habla como un pato, entonces tiene que ser un pato.
+#Funcionalidad de los hashes
+capitales = Hash.new()
+#Un hash se crea con un conjunto de elementos iniciales
+capitales = {"Florida" => "Miami", "Washington" => "Seatle", "Louisiana" => "New Orleans"}
+#Conocer el tamaño del hash
+puts capitales.size
+#Mostrar valores del hash
+puts capitales[0] #No muetra nada porque se debe colocar la clave
+puts capitales["Washington"]
+#Agregar otro elemento al hash
+capitales["Oregon"] = "Portland"
+puts capitales
+#Cambiar un elemento del hash utilizando su clave
+capitales["Louisiana"] = "Louisville"
+puts capitales["Louisiana"]
 
-#Concatenación de strings
-edad = 50
-puts "Mi nombre es lucho y mi edad es " + edad.to_s #No se puede hacer directo, toca hacer conoversión
-puts "Mi nombre es lucho y mi edad es #{edad}" #Interpolación de string
-
-#Replicación de strings
-team = "player" * 11
-puts team
-
-#Obtener tamaño de un string, se hace por dos metodos, size y length
-puts team.size
-puts team.length
-
-#Obtener substrings
-una_cadena = "Esta es una cadena de caracteres, no muy larga, no muy corta"
-puts una_cadena[0,7]
-puts una_cadena[5,12] #[Donde inicia, Cantidad de caracteres que aparecen luego de donde inicia]
-puts una_cadena[12..19] #[va desde acá.. hasta acá incluyendolo]
-
-#Como saber si un string contiene otro string
-#Metodo include devuelve true or false
-#En que indice de la cadena de caracteres se incluye el string
-puts una_cadena.include?("mediana")
-puts una_cadena.include?("larga")
-puts una_cadena.index("larga") #Da el indice donde inicia la palabra
-puts una_cadena.index("mediana")
-
-#Poner en mayuscula todo el string
-puts una_cadena.upcase
-#Poner en minuscula todo el string
-puts una_cadena.downcase
-
-#Quitar espacios que hayan antes y/o despues de cadena de caracteres
-una_cadena = "          Esta es una cadena de caracteres, no muy larga, no muy corta          "
-puts una_cadena
-puts una_cadena.rstrip #Remueve los espacios hacia la derecha de la cadena
-puts una_cadena.lstrip #Remueve los espacios hacia la izquierda de la cadena
-puts una_cadena.strip #Remueve los espacios antes y después de la cadena
-
-#Metodo split:coge la cadena de caracteres, devuelve un array de string que es un pedazo de la cadena de
-#caracteres inicial
-#split sin argumentos, sobreentiende que el argumento es espacio
-una_cadena = "Esta es una cadena de caracteres, no muy larga, no muy corta"
-puts una_cadena.split #Eliminó los espacios
-puts una_cadena.split(",") #Elimina los caracteres por los que hago la división
-puts una_cadena.split.join #Split eliminó los espacios y lo volví un array
-                           #join concatenó las posiciones del array
-
-#Una cadena se puede revertir
-una_cadena.reverse
-
-#append: Similar a una concatenación (<<)
-una_cadena + " Más bien mediana."
-puts una_cadena #No imprimio lo que está después de una_cadena
-una_cadena << " Más bien mediana."
-puts una_cadena #Ya hizo la concatenación de un texto adicional a una variable
-
-
+precios = {"Papa" => 2000, "Huevo" => 700, "Queso" => 6000}
+puts precios
+puts precios["Papa"]
+puts precios["Papa"] * 10
