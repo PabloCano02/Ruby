@@ -1,24 +1,23 @@
-#What cases do you think arrays are more suitable than hashes for?
+#What is the difference between chomp and chop?
+
+#Código con chomp
+nombre = "hola!"
+puts nombre.chomp
+
+#Código con chomp
+nombre = "hola!"
+puts nombre.chop
 
 =begin
-  Los arrays son más adecuadas que los hashes cuando:
+  Chomp and chop are both methods used to remove characters from the end of a string,
+  but they work slightly differently.
 
-    -Se necesita mantener un orden: Los arrays mantienen el orden de los elementos y son los más adecuadas
-    cuando el orden de los datos es importante. Los hashes, por otro lado, no mantienen ningún orden.
+  Chomp removes a specified record separator from the end of a string, or the default record
+  separator (\n) if no separator is provided.
 
-    -Se requiere acceso basado en índices: Los arrays son la mejor opción cuando se necesita acceder a los
-    datos a través de un índice. En contraste, los hashes son más adecuados cuando se necesita acceder a los
-    datos a través de una clave.
+  Chop on the other hand, removes the last character from a string, regardless of what that
+  character is.
 
-    -Se esperan valores duplicados: Los arrays pueden contener valores duplicados. En contraste, los hashes
-    requieren claves únicas y los valores pueden ser sobrescritos si se asignan múltiples claves al mismo
-    valor.
-
-    -Se utilizan tipos de datos simples: Los arrays son más adecuadas para almacenar tipos de datos simples
-    como números, cadenas y booleanos. Los hashes son más adecuados para almacenar tipos de datos complejos
-    como objetos y arrays.
-
-    -Se tiene en cuenta el uso de memoria: Los arrays usan menos memoria que los hashes porque no requieren
-    claves para cada elemento. Esto puede hacer que los arrays sean una mejor opción para conjuntos de datos
-    grandes donde el uso de memoria es una preocupación.
+  It's important to note that both chomp and chop modify the original string, so if you want
+  to keep the original string intact, you should make a copy of it before using either of these methods.
 end
