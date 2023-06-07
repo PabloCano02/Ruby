@@ -7,7 +7,6 @@ sentence = gets.chomp
 puts "Enter a number:"
 number = gets.chomp.to_i
 
-
 def words_greater_than(string, number)
   words = string.split(" ")
   result = []
@@ -22,4 +21,3 @@ end
 result = words_greater_than(sentence, number)
 puts "Words greater than #{number}:"
 puts result.inspect
-
